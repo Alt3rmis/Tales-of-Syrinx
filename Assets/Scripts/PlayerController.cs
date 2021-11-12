@@ -76,24 +76,10 @@ public class PlayerController : MonoBehaviour
             rg.AddForce(jump * jumpForce, ForceMode.Impulse);
             canDoubleJump = false;
         }
-        // if (isGrounded)
-        // {
-        //     jumpCount = 0;
-        // }
-        // if (jumpCount < 3)
-        // {
-        //     rg.velocity = new Vector2(rg.velocity.x, jumpForce);
-        //     jumpCount += 1;
-        // }
     }
 
     public void OnFire(InputAction.CallbackContext value)
     {
-        // if (value.performed)
-        // {
-        //     GameObject shootingPoint = GameObject.Find("Fire");
-        //     Instantiate(Bullet, shootingPoint.GetComponent<Transform>().position, shootingPoint.GetComponent<Transform>().rotation);
-        // }
         if (value.performed)
         {
             Shoot();
