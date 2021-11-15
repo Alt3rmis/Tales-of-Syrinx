@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    // This flip method cannot be applied to a non-centered 2d character properly.
     private void Flip()
     {
         isFacingRight = !isFacingRight;
