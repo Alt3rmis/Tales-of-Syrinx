@@ -12,12 +12,15 @@ public class PlayerController : MonoBehaviour
     public int keys;
     // jump function
     private Vector3 jump;
-    // private int jumpCount = 0; //Make the player able to double jump
-    private bool canDoubleJump = false; //Make the player able to double jump
+    public int jumpCount = 2;
+    //private bool canDoubleJump = false; //Make the player able to double jump
     private Rigidbody rg;
-    private float disToGround = 1.0f;
+    // private float disToGround = 1.0f;
+    public LayerMask GroundLayerMask;
     private float inputX;
     private bool isGrounded = false;
+    public bool isJump = false;
+
 
     // Flip
     private bool isFacingRight = true;
@@ -25,6 +28,10 @@ public class PlayerController : MonoBehaviour
     // Fire
     public Transform firePoint;
     public GameObject bulletPrefab;
+
+
+    // Animation
+    public Animator animator;
 
     void Awake()
     {
@@ -36,17 +43,37 @@ public class PlayerController : MonoBehaviour
         rg = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
+
     void Update()
+    {
+        
+    }
+
+    void FixedUpdate()
     {
         rg.velocity = new Vector3(inputX * moveSpeed, rg.velocity.y, 0);
         Physics.gravity = new Vector3(0, gravity, 0);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, disToGround);
+        // isGrounded = Physics.Raycast(transform.position, Vector3.down, disToGround); old check ground method
+        // isGrounded = Physics.OverlapCircle(groundCheck.position, 0.1f, ground);
+        isGrounded = GroundCheck();
+        if(isGrounded)
+        {
+            jumpCount = 2;
+        }
+
+    }
+
+    private bool GroundCheck()
+    {
+        float extraHeightText = .5f;
+        bool raycastHit = Physics.Raycast(rg.position, Vector3.down, extraHeightText, GroundLayerMask);
+        return raycastHit;
     }
 
     public void OnMovement(InputAction.CallbackContext value)
     {
         inputX = value.ReadValue<Vector2>().x;
-
+        animator.SetFloat("Speed", Mathf.Abs(inputX));
         // Flip the character
         if (inputX > 0 && !isFacingRight)
         {
@@ -60,21 +87,16 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (isGrounded)
+        if(jumpCount > 0)
         {
-            rg.velocity = new Vector3(rg.velocity.x, 0, 0);
-            // rg.velocity = new Vector2(rg.velocity.x, jumpForce);
-            rg.AddForce(jump * jumpForce, ForceMode.Impulse);
-            canDoubleJump = true;
+            Jump();
+            jumpCount -= 1;
         }
-        else if (canDoubleJump)
-        {
-            Debug.Log("double jump!");
-            rg.velocity = new Vector3(rg.velocity.x, 0, 0);
-            // rg.velocity = new Vector2(rg.velocity.x, jumpForce);
-            rg.AddForce(jump * jumpForce, ForceMode.Impulse);
-            canDoubleJump = false;
-        }
+    }
+
+    private void Jump()
+    {
+        rg.velocity = new Vector3(rg.velocity.x, jumpForce, 0);
     }
 
     public void OnFire(InputAction.CallbackContext value)
