@@ -5,12 +5,11 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController player;
 
-    public float moveSpeed;
+    public float moveSpeed = 10.0f;
     public float jumpForce = 5.0f;
-    public float gravity;
+    public float gravity = 10.0f;
 
-    public int keys = 0;
-
+    public int keys;
     // jump function
     private Vector3 jump;
     // private int jumpCount = 0; //Make the player able to double jump

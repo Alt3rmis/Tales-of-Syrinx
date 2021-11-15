@@ -728,9 +728,9 @@ GameObject:
   - component: {fileID: 597712817}
   - component: {fileID: 597712820}
   - component: {fileID: 597712821}
-  - component: {fileID: 597712823}
   - component: {fileID: 597712822}
-  m_Layer: 0
+  - component: {fileID: 597712823}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597712816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.74, y: 5.77, z: -1.2}
+  m_LocalPosition: {x: -27.64, y: 5.77, z: -1.2}
   m_LocalScale: {x: 8, y: 8, z: 4.0497}
   m_Children: []
   m_Father: {fileID: 0}
@@ -845,13 +845,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597712816}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0ec4f7ef6c7ba6e458ad77bb82c5ae5a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.10639307
-  m_Height: 0.32674295
+  m_Radius: 0.08638334
+  m_Height: 0.31404704
   m_Direction: 1
-  m_Center: {x: -0.09360692, y: -0.036628515, z: 0}
+  m_Center: {x: -0.08, y: -0.05, z: 0}
 --- !u!114 &597712822
 MonoBehaviour:
   m_ObjectHideFlags: 0
