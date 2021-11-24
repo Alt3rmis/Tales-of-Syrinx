@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 10.0f;
 
     public int keys;
+
     // jump function
     private Vector3 jump;
     public int jumpCount = 2;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         // isGrounded = Physics.Raycast(transform.position, Vector3.down, disToGround); old check ground method
         // isGrounded = Physics.OverlapCircle(groundCheck.position, 0.1f, ground);
         isGrounded = GroundCheck();
+        Debug.Log(isGrounded);
         if(isGrounded)
         {
             jumpCount = 2;
@@ -65,8 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private bool GroundCheck()
     {
-        float extraHeightText = .5f;
+        float extraHeightText = 2;
         bool raycastHit = Physics.Raycast(rg.position, Vector3.down, extraHeightText, GroundLayerMask);
+        Debug.DrawLine(rg.position, new Vector3(rg.position.x, rg.position.y-2, rg.position.z), Color.red);
         return raycastHit;
     }
 
