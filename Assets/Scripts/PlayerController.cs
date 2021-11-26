@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayerMask;
     private float inputX;
     private bool isGrounded = false;
-    public bool isJump = false;
+    public bool isJumping = false;
 
 
     // Flip
@@ -57,10 +57,13 @@ public class PlayerController : MonoBehaviour
         // isGrounded = Physics.Raycast(transform.position, Vector3.down, disToGround); old check ground method
         // isGrounded = Physics.OverlapCircle(groundCheck.position, 0.1f, ground);
         isGrounded = GroundCheck();
-        Debug.Log(isGrounded);
+        // Debug.Log(isGrounded);
         if(isGrounded)
         {
+            animator.SetBool("IsJumping", false);
             jumpCount = 2;
+        } else {
+            animator.SetBool("IsJumping", true);
         }
 
     }
