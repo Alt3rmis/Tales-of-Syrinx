@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = new Vector3(speed, 0.0f, 0.0f);
         // Destroy(gameObject, 1f);
     }
 
