@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     public Rigidbody rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb.velocity = transform.right * speed;
         // Destroy(gameObject, 1f);

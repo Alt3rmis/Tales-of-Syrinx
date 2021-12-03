@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
+    // Launch the reed
+    public GameObject reedPrefab;
+
 
     // Animation
     public Animator animator;
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if(jumpCount > 0)
+        if(value.performed && jumpCount > 0)
         {
             Jump();
             jumpCount -= 1;
@@ -110,6 +113,16 @@ public class PlayerController : MonoBehaviour
         if (value.performed)
         {
             Shoot();
+        }
+    }
+
+    
+    // Launch the reed platform
+    public void LaunchReed(InputAction.CallbackContext value)
+    {
+        if(value.performed)
+        {
+            Instantiate(reedPrefab, firePoint.position, firePoint.rotation);
         }
     }
 
