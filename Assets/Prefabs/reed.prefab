@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1889702169299523171}
   - component: {fileID: 1889702169299523168}
   - component: {fileID: 1889702169299523169}
-  - component: {fileID: 1889702169299523173}
+  - component: {fileID: 7765574254689724722}
   m_Layer: 0
   m_Name: reed
   m_TagString: Untagged
@@ -115,7 +115,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.28, y: 0.92, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1889702169299523173
+--- !u!114 &7765574254689724722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1889702169299523166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94139f21d73cf44c9a56ad007627e25, type: 3}
+  m_Script: {fileID: 11500000, guid: 57148d1432b73574abe53d66dfc92924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
-  allowedDifference: 3
+  lifetime: 3
+  allowedDifference: 5
   speed: 20
   rb: {fileID: 1889702169299523168}

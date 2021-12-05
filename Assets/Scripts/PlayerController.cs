@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     // Launch the reed
     public GameObject reedPrefab;
+    public int reed_count = 1;
 
 
     // Animation
@@ -64,11 +65,18 @@ public class PlayerController : MonoBehaviour
         if(isGrounded)
         {
             animator.SetBool("IsJumping", false);
-            jumpCount = 2;
+            jumpCount = 1;
         } else {
             animator.SetBool("IsJumping", true);
         }
 
+
+        GameObject go = GameObject.Find("reed");
+        // 
+        if(go !== null)
+        {
+            Debug.Log('Find!');
+        }
     }
 
     private bool GroundCheck()
@@ -120,9 +128,10 @@ public class PlayerController : MonoBehaviour
     // Launch the reed platform
     public void LaunchReed(InputAction.CallbackContext value)
     {
-        if(value.performed)
+        if(value.performed && reed_count > 0)
         {
             Instantiate(reedPrefab, firePoint.position, firePoint.rotation);
+            reed_count -= 1;
         }
     }
 

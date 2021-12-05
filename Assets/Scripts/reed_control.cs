@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class reed_control : MonoBehaviour
+public class reed : MonoBehaviour
 {
     // how long will the reed platform exist
     public float lifetime = 1.0f;
